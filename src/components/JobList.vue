@@ -1,11 +1,28 @@
 <template>
-  <li>
+  <li :class="{ 'featured-list': isFeatured }">
     <div class="company-detail">
-      <img :src="job.logo" alt="" />
+      <img
+        :src="
+          'https://festive-kowalevski-4c5b61.netlify.app/projects/job_listings_with_filtering' +
+            job.logo
+        "
+        alt=""
+      />
       <div class="company-bio">
-        <div class="company-name">
-          {{ job.company }}
+        <div class="title">
+          <div class="company-name">
+            {{ job.company }}
+          </div>
+          <div class="highlight">
+            <span class="highlight--new" v-if="job.new">
+              NEW!
+            </span>
+            <span class="highlight--featured" v-if="job.featured">
+              FEATURED
+            </span>
+          </div>
         </div>
+
         <div class="company-position">
           {{ job.position }}
         </div>
@@ -44,6 +61,11 @@
 <script>
 export default {
   props: ["job"],
+  computed: {
+    isFeatured() {
+      return this.job.new && this.job.featured;
+    },
+  },
 };
 </script>
 
@@ -62,6 +84,7 @@ img {
   width: 80px;
   height: 80px;
   margin: auto;
+  margin-right: 15px;
 }
 .company-detail {
   display: flex;
@@ -111,5 +134,36 @@ img {
   color: var(--DesaturatedDarkCyan);
   background-color: var(--LightGrayishCyanFilterTablets);
   cursor: pointer;
+}
+
+.featured-list {
+  border-left: 6px solid var(--DesaturatedDarkCyan);
+}
+
+.highlight {
+  margin: 0 10px;
+  font-size: 0.7rem;
+  color: #fff;
+  display: flex;
+}
+
+.highlight span {
+  margin: 5px;
+  padding: 4px 5px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.highlight--new {
+  background-color: var(--DesaturatedDarkCyan);
+}
+.highlight--featured {
+  background-color: var(--VeryDarkGrayishCyan);
+}
+
+.title {
+  display: flex;
+  justify-content: center;
 }
 </style>

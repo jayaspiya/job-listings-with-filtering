@@ -17,6 +17,7 @@ export default {
 };
 </script>
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@500;700&display=swap");
 :root {
   --DesaturatedDarkCyan: hsl(180, 29%, 50%);
   --LightGrayishCyanBG: hsl(180, 52%, 96%);
