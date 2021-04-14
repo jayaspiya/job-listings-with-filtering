@@ -166,4 +166,32 @@ img {
   display: flex;
   justify-content: center;
 }
+
+@media screen and (max-width: 1150px) {
+  li {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .company-detail {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .company-bio {
+    padding: 20px;
+  }
+
+  .skill-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  img {
+    margin: auto;
+  }
+  .more-info {
+    justify-content: center;
+  }
+}
 </style>
