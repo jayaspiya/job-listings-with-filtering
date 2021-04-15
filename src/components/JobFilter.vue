@@ -70,9 +70,6 @@ li > button {
   display: flex;
   align-items: center;
 }
-.filterItem-leave-active {
-  animation: fade 0.1s ease-in reverse;
-}
 .filterItem-enter-active {
   animation: fade 0.1s ease-in;
 }
