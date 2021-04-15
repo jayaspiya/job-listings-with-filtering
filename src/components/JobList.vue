@@ -42,17 +42,13 @@
       </div>
     </div>
     <div class="skill-list">
-      <div class="skill">
-        {{ job.role }}
-      </div>
-      <div class="skill">
-        {{ job.level }}
-      </div>
-      <div class="skill" v-for="skill in job.languages" :key="skill">
+      <div
+        class="skill"
+        v-for="skill in skills"
+        :key="skill"
+        @click="addFilter"
+      >
         {{ skill }}
-      </div>
-      <div class="skill" v-for="tool in job.tools" :key="tool">
-        {{ tool }}
       </div>
     </div>
   </li>
@@ -65,7 +61,24 @@ export default {
     isFeatured() {
       return this.job.new && this.job.featured;
     },
+    skills() {
+      const skills = [
+        this.job.role,
+        this.job.level,
+        ...this.job.languages,
+        ...this.job.tools,
+      ];
+      return skills;
+    },
   },
+  methods: {
+    addFilter(el) {
+      if (!this.filterOption.includes(el.target.textContent)) {
+        this.filterOption.push(el.target.textContent);
+      }
+    },
+  },
+  inject: ["filterOption"],
 };
 </script>
 
@@ -129,13 +142,17 @@ img {
 .skill {
   font-size: 0.9em;
   margin: 6px;
-  padding: 3px;
+  padding: 5px;
   border-radius: 6px;
   color: var(--DesaturatedDarkCyan);
   background-color: var(--LightGrayishCyanFilterTablets);
   cursor: pointer;
+  transition: all 0.1s ease-in;
 }
-
+.skill:hover {
+  background-color: var(--DesaturatedDarkCyan);
+  color: var(--LightGrayishCyanFilterTablets);
+}
 .featured-list {
   border-left: 6px solid var(--DesaturatedDarkCyan);
 }
