@@ -1,13 +1,7 @@
 <template>
   <li :class="{ 'featured-list': isFeatured }">
     <div class="company-detail">
-      <img
-        :src="
-          'https://festive-kowalevski-4c5b61.netlify.app/projects/job_listings_with_filtering' +
-            job.logo
-        "
-        alt=""
-      />
+      <img :src="logoLocation" />
       <div class="company-bio">
         <div class="title">
           <div class="company-name">
@@ -50,29 +44,6 @@
       >
         {{ skill }}
       </div>
-      <!-- <div class="skill" @click="addFilter">
-        {{ job.role }}
-      </div>
-
-      <div class="skill" @click="addFilter">
-        {{ job.level }}
-      </div>
-      <div
-        class="skill"
-        v-for="skill in job.languages"
-        :key="skill"
-        @click="addFilter"
-      >
-        {{ skill }}
-      </div>
-      <div
-        class="skill"
-        v-for="tool in job.tools"
-        :key="tool"
-        @click="addFilter"
-      >
-        {{ tool }}
-      </div> -->
     </div>
   </li>
 </template>
@@ -81,6 +52,10 @@
 export default {
   props: ["job"],
   computed: {
+    logoLocation() {
+      const url = require("@/assets/images" + this.job.logo);
+      return url;
+    },
     isFeatured() {
       return this.job.new && this.job.featured;
     },

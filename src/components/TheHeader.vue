@@ -6,7 +6,7 @@
 header {
   width: 100%;
   height: 20vh;
-  background-image: url("../assets/images/bg-header-desktop.svg");
+  background-image: url("../assets/bg-header-desktop.svg");
   background-repeat: repeat;
   background-color: var(--DesaturatedDarkCyan);
 }

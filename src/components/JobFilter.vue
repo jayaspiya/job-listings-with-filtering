@@ -5,7 +5,9 @@
         <span>
           {{ filter }}
         </span>
-        <button @click="removeFilter">X</button>
+        <button @click="removeFilter">
+          <img src="../assets/icon-remove.svg" alt="X" />
+        </button>
       </li>
     </transition-group>
     <button @click="clearFilter" class="btn-clear">Clear</button>
@@ -19,7 +21,8 @@ export default {
       this.filterOption.length = 0;
     },
     removeFilter(el) {
-      const filterToDelete = el.target.parentElement.children[0].textContent;
+      const filterToDelete =
+        el.target.parentElement.parentElement.children[0].textContent;
       const deletingFilterIndex = this.filterOption.indexOf(filterToDelete);
       this.filterOption.splice(deletingFilterIndex, 1);
     },
@@ -62,10 +65,10 @@ li > button {
   background-color: var(--DesaturatedDarkCyan);
   border: none;
   padding: 4px;
-  color: #fff;
-  font-weight: bold;
   cursor: pointer;
   outline: none;
+  display: flex;
+  align-items: center;
 }
 .filterItem-leave-active {
   animation: fade 0.1s ease-in reverse;
