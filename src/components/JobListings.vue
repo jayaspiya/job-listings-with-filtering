@@ -14,9 +14,26 @@ export default {
   components: {
     JobList,
   },
+  computed: {
+    filteredJoblist() {
+      if (this.filterOption.length === 0) {
+        return this.theJoblist;
+      }
+      return this.theJoblist.filter((job) => {
+        const skills = [job.role, job.level, ...job.languages, ...job.tools];
+        const intersection = this.filterOption.filter((element) =>
+          skills.includes(element)
+        );
+        if (intersection.length === this.filterOption.length) {
+          return true;
+        }
+        return false;
+      });
+    },
+  },
   data() {
     return {
-      filteredJoblist: [...this.joblist],
+      theJoblist: [...this.joblist],
     };
   },
   inject: ["joblist", "filterOption"],

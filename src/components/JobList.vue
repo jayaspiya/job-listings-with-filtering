@@ -50,6 +50,29 @@
       >
         {{ skill }}
       </div>
+      <!-- <div class="skill" @click="addFilter">
+        {{ job.role }}
+      </div>
+
+      <div class="skill" @click="addFilter">
+        {{ job.level }}
+      </div>
+      <div
+        class="skill"
+        v-for="skill in job.languages"
+        :key="skill"
+        @click="addFilter"
+      >
+        {{ skill }}
+      </div>
+      <div
+        class="skill"
+        v-for="tool in job.tools"
+        :key="tool"
+        @click="addFilter"
+      >
+        {{ tool }}
+      </div> -->
     </div>
   </li>
 </template>
